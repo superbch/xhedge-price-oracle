@@ -71,7 +71,7 @@ async function tryToUpdateOracle(oracle) {
   console.log('lastUpdatedTime:', new Date(lastUpdatedTime * 1000));
 
   if (now - lastUpdatedTime < PERIOD_SIZE) {
-    console.logg('oracle is up-to-date');
+    console.log('oracle is up-to-date');
   } else {
     console.log('updating oracle ...');
     const tx = await oracle.update();
