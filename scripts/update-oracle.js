@@ -23,7 +23,7 @@ main()
 /*
   PRIV_KEY_FILE=pato/to/priv_key_file \
   SBCH_RPC_URL=http://13.214.157.111:8545 \
-  node update-oracle.js
+  node scripts/update-oracle.js
 */
 async function main() {
   const signer = await getSigner();
@@ -64,7 +64,7 @@ async function tryToUpdateOracle(oracle) {
   const height = await provider.getBlockNumber()
   const blk = await provider.getBlock(height)
   const now = blk.timestamp
-  const price = await oracle.getPrice();
+  const price = await oracle.getPrice().catch(err => 0);
   const lastUpdatedTime = await oracle.getLastUpdatedTime();
   console.log('now:', new Date(now * 1000));
   console.log('price:', ethers.utils.formatUnits(price));
