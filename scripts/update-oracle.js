@@ -6,7 +6,7 @@ const { decrypt } = require('./mycrypto');
 const WINDOW_SIZE = 12 * 3600;
 const PERIOD_SIZE = 30 * 60;
 
-const priceOracleAddr = '0xa1b0C0158b8602de44A291B563FAd733baE10Eeb'; // TODO
+const priceOracleAddr = '0xfeEf04aFB636fac5b0F91eBAC68C85F88ab260e6'; // TODO
 const priceOracleABI = [
   `function update() public`,
   `function getLastUpdatedTime() public view returns (uint64)`,
