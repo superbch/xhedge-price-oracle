@@ -62,6 +62,7 @@ async function getSigner() {
     [signer] = await ethers.getSigners();
     provider = signer.provider;
   }
+  console.log('adddr:', signer.address);
   return signer;
 }
 
