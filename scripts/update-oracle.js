@@ -29,13 +29,12 @@ async function main() {
   const signer = await getSigner();
   const oracle = new ethers.Contract(priceOracleAddr, priceOracleABI, signer);
 
+  // const delay = Number(process.env.DELAY_SECONDS || 0);
+  // if (delay > 0) {
+  //   console.log('delay:', delay);
+  //   await sleep(delay * 1000);
+  // }
   while (true) {
-    const delay = Number(process.env.DELAY_SECONDS || 0);
-    if (delay > 0) {
-      console.log('delay:', delay);
-      await sleep(delay * 1000);
-    }
-
     console.log('tick:', new Date());
 
     try {
