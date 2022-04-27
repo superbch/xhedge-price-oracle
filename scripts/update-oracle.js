@@ -6,7 +6,7 @@ const { decrypt } = require('./mycrypto');
 const WINDOW_SIZE = 12 * 3600;
 const PERIOD_SIZE = 30 * 60;
 
-const priceOracleAddr = '0xfeEf04aFB636fac5b0F91eBAC68C85F88ab260e6'; // TODO
+const priceOracleAddr = '0x45e23074777Dc816F5B26fd9eCF6d69c0728dd63';
 const priceOracleABI = [
   `function update() public`,
   `function getLastUpdatedTime() public view returns (uint64)`,
@@ -30,6 +30,12 @@ async function main() {
   const oracle = new ethers.Contract(priceOracleAddr, priceOracleABI, signer);
 
   while (true) {
+    const delay = Number(process.env.DELAY_SECONDS || 0);
+    if (delay > 0) {
+      console.log('delay:', delay);
+      await sleep(delay * 1000);
+    }
+
     console.log('tick:', new Date());
 
     try {
